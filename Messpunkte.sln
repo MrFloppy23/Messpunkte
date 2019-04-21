@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messpunkte", "Messpunkte\Messpunkte.csproj", "{BFC8E284-65BC-4B1F-9557-E274559E0066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MesspunkteLogic", "MesspunkteLogic\MesspunkteLogic.csproj", "{E9701A50-1238-4D4E-AD36-F3203F34B1EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFC8E284-65BC-4B1F-9557-E274559E0066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC8E284-65BC-4B1F-9557-E274559E0066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC8E284-65BC-4B1F-9557-E274559E0066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC8E284-65BC-4B1F-9557-E274559E0066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9701A50-1238-4D4E-AD36-F3203F34B1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9701A50-1238-4D4E-AD36-F3203F34B1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9701A50-1238-4D4E-AD36-F3203F34B1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9701A50-1238-4D4E-AD36-F3203F34B1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {619E3EE7-19EF-4615-AAFB-8787FEB50CE5}
+	EndGlobalSection
+EndGlobal
