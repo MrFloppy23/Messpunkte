@@ -23,22 +23,13 @@ namespace MesspunkteLogic
                 throw new ArgumentException($"Spalte 0 entspricht nicht dem Datentyp int! Messzeile: {messZeile}");
             }
 
-            if (int.TryParse(messwertTeile[1], out int objekt))
+            if (int.TryParse(messwertTeile[1], out int objekt) && int.TryParse(messwertTeile[2], out int nr))
             {
-                Objekt = objekt;
+                Messpunkt = new MesswertKey(objekt, nr);
             }
             else
             {
-                throw new ArgumentException($"Spalte 1 entspricht nicht dem Datentyp int! Messzeile: {messZeile}");
-            }
-
-            if (int.TryParse(messwertTeile[2], out int nr))
-            {
-                Nr = nr;
-            }
-            else
-            {
-                throw new ArgumentException($"Spalte 2 entspricht nicht dem Datentyp int! Messzeile: {messZeile}");
+                throw new ArgumentException($"Spalte 1 oder 2 entsprechen nicht dem Datentyp int! Messzeile: {messZeile}");
             }
 
             if (DateTime.TryParseExact($"{messwertTeile[3]}{messwertTeile[4]}", "yyyyMMddhhmm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime datum))
@@ -89,11 +80,16 @@ namespace MesspunkteLogic
             }
         }
 
+        public Messwert(MesswertKey messpunkt)
+        {
+            Messpunkt = messpunkt;
+
+            // other values remain empty!
+        }
+
         public int A { get; set; }
 
-        public int Objekt { get; set; }
-
-        public int Nr { get; set; }
+        public MesswertKey Messpunkt { get; set; }
 
         public DateTime Datum { get; set; }
 
@@ -107,7 +103,7 @@ namespace MesspunkteLogic
 
         public override string ToString()
         {
-            return $"{A} {Objekt} {Nr} {Datum} {QA} {TM} {HN} {S}";
+            return $"{A} {Messpunkt} {Datum} {QA} {TM} {HN} {S}";
         }
     }
 }
