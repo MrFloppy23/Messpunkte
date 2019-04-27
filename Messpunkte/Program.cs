@@ -13,32 +13,26 @@ namespace Messpunkte
     class Program
     {
         public const string PFAD_MESSDATEN = @".\Messdaten";
+        public const string PFAD_AUSGABE = @".\CSV";
 
         static void Main(string[] args)
         {
             MessdatenReader mr = new MessdatenReader();
 
             var messwerte = mr.ReadMesswerte(PFAD_MESSDATEN, "*.PRA");
+            var messwerteProMesspunkt = mr.MesswerteAufbereiten(messwerte);
 
-            //foreach(var messwert in messwerte)
-            //{
-            //    Console.WriteLine(messwert.ToString());
-            //}
+            // Ausgabepfad anlegen, falls er noch nicht existiert
+            Directory.CreateDirectory(PFAD_AUSGABE);
 
-            //var json = JsonConvert.SerializeObject(messwerte);
-
-            //using (var sr = new StreamWriter(@".\messpunkte.json"))
-            //{
-            //    JsonSerializer js = new JsonSerializer();
-
-            //    js.Serialize(sr, json);
-            //}
-
-            using (StreamWriter sr = new StreamWriter(@".\messpunkte.csv"))
+            foreach (var messpunkt in messwerteProMesspunkt)
             {
-                using (CsvWriter cw = new CsvWriter(sr))
+                using (StreamWriter sr = new StreamWriter($"{PFAD_AUSGABE}\\{messpunkt.Key}.csv"))
                 {
-                    cw.WriteRecords(messwerte);
+                    using (CsvWriter cw = new CsvWriter(sr))
+                    {
+                        cw.WriteRecords(messpunkt.Value);
+                    }
                 }
             }
         }
