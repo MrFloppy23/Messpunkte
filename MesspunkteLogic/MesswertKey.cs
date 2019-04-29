@@ -41,5 +41,17 @@ namespace MesspunkteLogic
         {
             return $"{Objekt}{Nr}";
         }
+
+        public override bool Equals(object obj)
+        {
+            MesswertKey other = (MesswertKey)obj;
+
+            return Objekt == other.Objekt && Nr == other.Nr;
+        }
+
+        public override int GetHashCode()
+        {
+            return Objekt.GetHashCode() ^ Nr.GetHashCode();
+        }
     }
 }

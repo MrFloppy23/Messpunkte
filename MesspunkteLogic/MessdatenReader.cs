@@ -60,18 +60,18 @@ namespace MesspunkteLogic
             var aufbereitet = new Dictionary<MesswertKey, SortedSet<Messwert>>();
             var messpunkte = new List<string>();
 
-            // über alle Messtage iterieren
-            foreach (var messtag in messwerte.Item3)
+            // über alle Messpunkte iterieren
+            foreach (var messpunkt in messwerte.Item2)
             {
-                // über alle Messpunkte iterieren
-                foreach (var messpunkt in messwerte.Item2)
+                // über alle Messtage iterieren
+                foreach (var messtag in messwerte.Item3)
                 {
                     // Messdaten holen, oder leere Messdaten für den Messpunkt und Tag hinterlegen
-                    var messdatenFuerPunkt = messwerte.Item1.Where(mw => mw.Datum == messtag && mw.Messpunkt == messpunkt).FirstOrDefault();
+                    var messdatenFuerPunkt = messwerte.Item1.Where(mw => mw.Datum == messtag && mw.Messpunkt.Equals(messpunkt)).FirstOrDefault();
 
                     if (messdatenFuerPunkt == null)
                     {
-                        messdatenFuerPunkt = new Messwert(messpunkt);
+                        messdatenFuerPunkt = new Messwert(messpunkt, messtag);
                     }
 
                     SortedSet<Messwert> messdaten;
