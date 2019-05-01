@@ -8,14 +8,15 @@ namespace MesspunkteLogic
 {
     public class MesswertKey : IComparable<MesswertKey>
     {
+        public int Objekt { get; private set; }
+
+        public int Nr { get; private set; }
+
         public MesswertKey(int objekt, int nr)
         {
             Objekt = objekt;
             Nr = nr;
         }
-
-        public int Objekt { get; private set; }
-        public int Nr { get; private set; }
 
         public int CompareTo(MesswertKey other)
         {

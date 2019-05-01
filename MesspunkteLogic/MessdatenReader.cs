@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MesspunkteLogic
 {
     public class MessdatenReader
     {
-        public Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> ReadMesswerte(string path, string fileEnding)
+        public static Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> ReadMesswerte(string path, string fileEnding)
         {
             IList<Messwert> messwerte = new List<Messwert>();
             ISet<MesswertKey> messpunkte = new HashSet<MesswertKey>();
@@ -55,7 +53,7 @@ namespace MesspunkteLogic
             return new Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>>(messwerte, messpunkte, messtage);
         }
 
-        public IDictionary<MesswertKey, SortedSet<Messwert>> MesswerteAufbereiten(Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> messwerte)
+        public static IDictionary<MesswertKey, SortedSet<Messwert>> MesswerteAufbereiten(Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> messwerte)
         {
             var aufbereitet = new Dictionary<MesswertKey, SortedSet<Messwert>>();
             var messpunkte = new List<string>();
