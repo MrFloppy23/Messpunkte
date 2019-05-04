@@ -4,6 +4,7 @@
     {
         public static void ProcessData(string verzeichnisMessdaten, string verzeichnisCSV)
         {
+            var existingMesswerte = CSVTools.ImportFromCSV(verzeichnisCSV);
             var messwerte = MessdatenReader.ReadMesswerte(verzeichnisMessdaten, "*.PRA");
             var messwerteProMesspunkt = MessdatenReader.MesswerteAufbereiten(messwerte);
 

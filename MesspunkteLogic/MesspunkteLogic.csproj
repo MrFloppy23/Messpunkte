@@ -53,6 +53,7 @@
     <Compile Include="Messwert.cs" />
     <Compile Include="MesswertDatumComparer.cs" />
     <Compile Include="MesswertKey.cs" />
+    <Compile Include="MesswertMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

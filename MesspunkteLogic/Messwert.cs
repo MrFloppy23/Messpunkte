@@ -5,8 +5,14 @@ namespace MesspunkteLogic
 {
     public class Messwert
     {
+        public Messwert()
+        {
+            // empty constructor
+        }
+
         public Messwert(string messZeile)
         {
+            // split at whitespaces
             var messwertTeile = messZeile.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
 
             if (messwertTeile.Length < 9)
