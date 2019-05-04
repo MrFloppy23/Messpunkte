@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MesspunkteLogic
 {
     public class MessdatenReader
     {
-        public Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> ReadMesswerte(string path, string fileEnding)
+        public static Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> ReadMesswerte(string path, string fileEnding)
         {
             IList<Messwert> messwerte = new List<Messwert>();
             ISet<MesswertKey> messpunkte = new HashSet<MesswertKey>();
@@ -55,23 +53,23 @@ namespace MesspunkteLogic
             return new Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>>(messwerte, messpunkte, messtage);
         }
 
-        public IDictionary<MesswertKey, SortedSet<Messwert>> MesswerteAufbereiten(Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> messwerte)
+        public static IDictionary<MesswertKey, SortedSet<Messwert>> MesswerteAufbereiten(Tuple<IList<Messwert>, ISet<MesswertKey>, ISet<DateTime>> messwerte)
         {
             var aufbereitet = new Dictionary<MesswertKey, SortedSet<Messwert>>();
             var messpunkte = new List<string>();
 
-            // über alle Messtage iterieren
-            foreach (var messtag in messwerte.Item3)
+            // über alle Messpunkte iterieren
+            foreach (var messpunkt in messwerte.Item2)
             {
-                // über alle Messpunkte iterieren
-                foreach (var messpunkt in messwerte.Item2)
+                // über alle Messtage iterieren
+                foreach (var messtag in messwerte.Item3)
                 {
                     // Messdaten holen, oder leere Messdaten für den Messpunkt und Tag hinterlegen
-                    var messdatenFuerPunkt = messwerte.Item1.Where(mw => mw.Datum == messtag && mw.Messpunkt == messpunkt).FirstOrDefault();
+                    var messdatenFuerPunkt = messwerte.Item1.Where(mw => mw.Datum == messtag && mw.Messpunkt.Equals(messpunkt)).FirstOrDefault();
 
                     if (messdatenFuerPunkt == null)
                     {
-                        messdatenFuerPunkt = new Messwert(messpunkt);
+                        messdatenFuerPunkt = new Messwert(messpunkt, messtag);
                     }
 
                     SortedSet<Messwert> messdaten;

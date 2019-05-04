@@ -32,7 +32,7 @@ namespace MesspunkteLogic
                 throw new ArgumentException($"Spalte 1 oder 2 entsprechen nicht dem Datentyp int! Messzeile: {messZeile}");
             }
 
-            if (DateTime.TryParseExact($"{messwertTeile[3]}{messwertTeile[4]}", "yyyyMMddhhmm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime datum))
+            if (DateTime.TryParseExact($"{messwertTeile[3]}{messwertTeile[4]}", "yyyyMMddHHmm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime datum))
             {
                 Datum = datum;
             }
@@ -80,9 +80,10 @@ namespace MesspunkteLogic
             }
         }
 
-        public Messwert(MesswertKey messpunkt)
+        public Messwert(MesswertKey messpunkt, DateTime datum)
         {
             Messpunkt = messpunkt;
+            Datum = datum;
 
             // other values remain empty!
         }
