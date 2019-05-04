@@ -38,9 +38,13 @@ namespace MesspunkteLogic
             return other.Nr.CompareTo(Nr);
         }
 
+        /// <summary>
+        /// String representation of MesswertKey.
+        /// </summary>
+        /// <returns>Objekt and Nr are concatenated, where Objekt is formatted with leading zeros for 6 digits and Nr with leading zeros for 2 digits. </returns>
         public override string ToString()
         {
-            return $"{Objekt}{Nr}";
+            return $"{Objekt:000000}{Nr:00}";
         }
 
         public override bool Equals(object obj)
